@@ -39,24 +39,43 @@ class CLI
   end 
 end 
 
-# def sub_menu_input
-#   # user_input = gets.strip 
+def sub_menu_input
+  user_input = gets.strip 
+  
+  if user_input.to_i.between?(1, Pokemon.all.length)
+    pokemon = Pokemon.all(user_input.to_i - 1)
+    print_pokemon_details(pokemon)
+    continue?
+  elsif user_input.downcase == "leave"
+  goodbye
+else 
+  invalid_input
+  sub_menu
     
-#   #   if user_input == "1"
-#   #   list_pokemon
-#   #   sub_menu 
-#   #     # menu
-#   #   elsif user_input == "leave"
-#   #   goodbye 
-#   # else 
-#   #   invalid_input 
-#   #   menu 
-#   # end 
-# end 
+  #   if user_input == "1"
+  #   list_pokemon
+  #   sub_menu 
+  #     # menu
+  #   elsif user_input == "leave"
+  #   goodbye 
+  # else 
+  #   invalid_input 
+  #   menu 
+  # end 
+end 
+end 
 
 def list_pokemon
   Pokemon.all.each.with_index(1) do |pokemon, i|
     puts "#{i}. #{pokemon.name}"
+end 
+
+def print_pokemon_details(pokemon)
+  puts "Name: #{pokemon.name}"
+  puts "Height: #{pokemon.height}"
+  puts "Weight: #{pokemon.weight}"
+  puts "Type: #{pokemon.type}"
+  puts "Gender: #{pokemon.gender}"
 end 
   
   def goodbye
