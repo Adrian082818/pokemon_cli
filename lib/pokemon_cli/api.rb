@@ -1,7 +1,7 @@
-require 'rest-client'
-require 'json'
-require 'pry'
-require_relative './pokemon'
+# require 'rest-client'
+# require 'json'
+# require 'pry'
+# require_relative './pokemon'
 
 
 class API 
