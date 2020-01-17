@@ -4,11 +4,11 @@ class Pokemon
   
   @@all = []
   
-  def initialize(attr_hash)
-    attr_hash.each do |key, value|
+  def initialize(attributes)
+    attributes.each do |key, value|
       self.send("#{key}=", value) if self.respond_to?("#{key}=")
-    save
     end 
+    save
   end 
   
   def save
@@ -18,4 +18,5 @@ class Pokemon
   def self.all
     @@all 
   end 
+  
 end 

@@ -12,24 +12,23 @@ class CLI
   end 
   
   def menu
-    puts "Type 1 to get a list of pokemon"
+    puts "Enter '1' to get a list of pokemon"
     puts "Enter 'leave' to exit program"
-    menu_input 
-    
+    menu_option 
   end
   
   def sub_menu
     puts "Enter a number associated with a pokemon to get more information on that pokemon"
     puts "Enter 'leave' to exit program"
-    sub_menu_input 
+    sub_menu_option
   end 
   
-  def menu_input 
+  def menu_option 
     user_input = gets.strip 
     
     if user_input == "1"
      list_pokemon
-     sub_menu 
+     sub_menu_option
       # menu
     elsif user_input.downcase == "leave"
     goodbye 
@@ -39,11 +38,11 @@ class CLI
   end 
 end 
 
-def sub_menu_input
+def sub_menu_option
   user_input = gets.strip 
   
   if user_input.to_i.between?(1, Pokemon.all.length)
-    pokemon = Pokemon.all(user_input.to_i - 1)
+    pokemon = Pokemon.all[user_input.to_i - 1]
     print_pokemon_details(pokemon)
     continue?
   elsif user_input.downcase == "leave"
@@ -72,15 +71,16 @@ def continue?
   
   user_input = gets.strip 
   if user_input == "1"
-    menu_input
+    menu 
+    menu_option
     elsif user_input == "2"
     list_pokemon
-    sub_menu_input
+    sub_menu_option
     elsif user_input == "leave"
    goodbye
- else 
-   invalid_input
-   goodbye
+ elsif invalid_input
+  else 
+    goodbye
  end 
 end 
   
@@ -90,7 +90,7 @@ end
   end 
   
   def invalid_input
-    puts "Error invalid_input"
+    puts "Error invalid input"
   end 
   
 end 
