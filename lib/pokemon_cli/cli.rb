@@ -21,7 +21,7 @@ class CLI
   def sub_menu
     puts "Enter a number associated with a pokemon to get more information on that pokemon"
     puts "Enter 'leave' to exit program"
-    # sub_menu_input 
+    sub_menu_input 
   end 
   
   def menu_input 
@@ -51,17 +51,6 @@ def sub_menu_input
 else 
   invalid_input
   sub_menu
-    
-  #   if user_input == "1"
-  #   list_pokemon
-  #   sub_menu 
-  #     # menu
-  #   elsif user_input == "leave"
-  #   goodbye 
-  # else 
-  #   invalid_input 
-  #   menu 
-  # end 
 end 
 end 
 
@@ -72,10 +61,27 @@ end
 
 def print_pokemon_details(pokemon)
   puts "Name: #{pokemon.name}"
-  puts "Height: #{pokemon.height}"
   puts "Weight: #{pokemon.weight}"
+  puts "Height: #{pokemon.height}"
   puts "Type: #{pokemon.type}"
   puts "Gender: #{pokemon.gender}"
+end 
+
+def continue?
+  puts "Enter '1' for menu, enter '2' to select another pokemon or enter 'leave' to exit program."
+  
+  user_input = gets.strip 
+  if user_input == "1"
+    menu_input
+    elsif user_input == "2"
+    list_pokemon
+    sub_menu_input
+    elsif user_input == "leave"
+   goodbye
+ else 
+   invalid_input
+   goodbye
+ end 
 end 
   
   def goodbye

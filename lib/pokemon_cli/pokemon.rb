@@ -7,15 +7,15 @@ class Pokemon
   def initialize(attr_hash)
     attr_hash.each do |key, value|
       self.send("#{key}=", value) if self.respond_to?("#{key}=")
+    save
     end 
-    self.save
   end 
   
   def save
     @@all << self 
   end 
   
-  def self.all 
+  def self.all
     @@all 
   end 
 end 
