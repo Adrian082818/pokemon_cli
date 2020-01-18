@@ -2,24 +2,28 @@ class CLI
   def start
     system('clear')
     
-    puts "Welcome to Pokemon API!"
-    puts "Loading..."
+    puts "Welcome to the Pokedex CLI!"
+    puts "Now accessing Pokemon data..."
     
-    API.new.get_all_pokemon
+    API.new.get_pokemon
     
-    puts "Loading complete..."
+    puts "Pokemon data has been Loaded..."
    menu 
   end 
   
   def menu
+    user_input = nil 
+    
+    while user_input != "exit"
     puts "Enter '1' to get a list of pokemon"
-    puts "Enter 'leave' to exit program"
+    puts "Enter 'exit' to exit application"
     menu_option 
+  end 
   end
   
   def sub_menu
-    puts "Enter a number associated with a pokemon to get more information on that pokemon"
-    puts "Enter 'leave' to exit program"
+    puts "Enter the number of the Pokemon you would like to know more about."
+    puts "Enter 'exit' to exit program."
     sub_menu_option
   end 
   
@@ -30,7 +34,7 @@ class CLI
      list_pokemon
      sub_menu_option
       # menu
-    elsif user_input.downcase == "leave"
+    elsif user_input.downcase == "exit"
     goodbye 
   else 
     invalid_input 
@@ -45,7 +49,7 @@ def sub_menu_option
     pokemon = Pokemon.all[user_input.to_i - 1]
     print_pokemon_details(pokemon)
     continue?
-  elsif user_input.downcase == "leave"
+  elsif user_input.downcase == "exit"
   goodbye
 else 
   invalid_input
@@ -67,7 +71,7 @@ def print_pokemon_details(pokemon)
 end 
 
 def continue?
-  puts "Enter '1' for menu, enter '2' to select another pokemon or enter 'leave' to exit program."
+  puts "Enter '1' for menu, enter '2' to select another pokemon or enter 'exit' to exit program."
   
   user_input = gets.strip 
   if user_input == "1"
@@ -85,12 +89,12 @@ def continue?
 end 
   
   def goodbye
-    puts "Thank you for using the Pokemon API Gem! Goodbye!"
+    puts "Thank you for using the Pokedex CLI! Goodbye!"
     exit 
   end 
   
   def invalid_input
-    puts "Error invalid input"
+    puts "Who's that Pokemon?"
   end 
   
 end 

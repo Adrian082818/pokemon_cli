@@ -2,6 +2,7 @@ class Pokemon
   
   attr_accessor :name, :weight, :height, :type, :gender
   
+  
   @@all = []
   
   def initialize(attributes)

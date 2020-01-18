@@ -1,12 +1,12 @@
 class API 
   URL = "https://pokeapi.co/api/v2/"
   
-  def get_all_pokemon(page=nil)
-    if page 
-      pokemon_info = RestClient.get(page)
-    else 
-  pokemon_info = RestClient.get("https://pokeapi.co/api/v2/pokemon")
- end 
+  def get_pokemon
+    # if page 
+    #   pokemon_info = RestClient.get(page)
+    # else 
+  pokemon_info = RestClient.get("https://pokeapi.co/api/v2/pokemon/")
+# end 
   pokemons = JSON.parse(pokemon_info.body)["results"]
  
    
