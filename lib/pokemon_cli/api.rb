@@ -6,8 +6,9 @@ class API
     #   pokemon_info = RestClient.get(page)
     # else 
   pokemon_info = RestClient.get("https://pokeapi.co/api/v2/pokemon/")
+ 
 # end 
-  pokemons = JSON.parse(pokemon_info.body)["results"]
+  pokemons_attributes = JSON.parse(pokemon_info.body)["results"]
  
    
    pokemons.each do |pokemon|
@@ -22,4 +23,4 @@ end
 
 
 end 
-# binding.pry 
+binding.pry 

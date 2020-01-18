@@ -36,7 +36,7 @@ class CLI
       # menu
     elsif user_input.downcase == "exit"
     goodbye 
-  else 
+  else
     invalid_input 
     menu 
   end 
@@ -47,11 +47,11 @@ def sub_menu_option
   
   if user_input.to_i.between?(1, Pokemon.all.length)
     pokemon = Pokemon.all[user_input.to_i - 1]
-    print_pokemon_details(pokemon)
+    pokemon_attributes(pokemon)
     continue?
   elsif user_input.downcase == "exit"
   goodbye
-else 
+else
   invalid_input
   sub_menu
 end 
@@ -62,7 +62,7 @@ def list_pokemon
     puts "#{i}. #{pokemon.name}"
 end 
 
-def print_pokemon_details(pokemon)
+def pokemon_attributes(pokemon)
   puts "Name: #{pokemon.name}"
   puts "Weight: #{pokemon.weight}"
   puts "Height: #{pokemon.height}"
@@ -82,14 +82,14 @@ def continue?
     sub_menu_option
     elsif user_input == "leave"
    goodbye
- elsif invalid_input
   else 
+  invalid_input
     goodbye
  end 
 end 
   
   def goodbye
-    puts "Thank you for using the Pokedex CLI! Goodbye!"
+    puts "Thank you for using the Pokedex CLI!"
     exit 
   end 
   
