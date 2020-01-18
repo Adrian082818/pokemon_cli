@@ -5,9 +5,10 @@ class API
     if page 
       pokemon_info = RestClient.get(page)
     else 
-   pokemon_info = RestClient.get("https://pokeapi.co/api/v2/pokemon")
+  pokemon_info = RestClient.get("https://pokeapi.co/api/v2/pokemon")
  end 
-   pokemons = JSON.parse(pokemon_info.body)["results"]
+  pokemons = JSON.parse(pokemon_info.body)["results"]
+ 
    
    pokemons.each do |pokemon|
   Pokemon.new(pokemon)
