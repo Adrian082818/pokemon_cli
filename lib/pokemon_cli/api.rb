@@ -7,9 +7,9 @@ class API
     else 
    pokemon_info = RestClient.get("https://pokeapi.co/api/v2/pokemon")
  end 
-   pokemons_array = JSON.parse(pokemon_info.body)["results"]
+   pokemons = JSON.parse(pokemon_info.body)["results"]
    
-   pokemons_array.each do |pokemon|
+   pokemons.each do |pokemon|
   Pokemon.new(pokemon)
     end
     
